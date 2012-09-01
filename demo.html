@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>Jobvite demo</title>
+	</head>
+	<body>
+		<h3>Feed:</h3>
+		<input type="button" id="getFeed" value="Get Feed"></input>
+		<div id="feed"></div>
+		
+		<!-- todo - remove protocol when not viewing locally -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script>
+			(function($){
+				$.extend({
+					// TODO: options object & defaults
+					jobVite: function(companyId, jobCallback) {
+						var $self = this;
+						
+			  			var yqlUrl = "http://query.yahooapis.com/v1/public/yql";
+						var query = "select * from xml(0,10) where url='http://www.jobvite.com/CompanyJobs/Xml.aspx?c=" +
+									 companyId + 
+									"' and itemPath='result.job'";
+						
+						var ajaxOptions = {
+						    url: yqlUrl,
+						    dataType: 'jsonp',
+						    async: true,
+						    data: {
+						    	q: query,
+						    	format: 'json',
+						    	env: 'store://datatables.org/alltableswithkeys',
+						    	callback: '?'
+						    },
+						    success: function(json) {
+						    	jobCallback(json.query.results.job);
+						    },
+						    error: function() { 
+						    	// TODO: error callback
+						    	alert('Timed out getting job feed.');
+						    },
+						    timeout: 10000
+						};
+
+						$.ajax(ajaxOptions);
+						return $self.toReturn;
+					}
+				});
+			})(jQuery);
+
+			$(document).ready(function() {
+				$('#getFeed').live(
+				    'click',
+				    function() {
+				        $.jobVite(
+				        	'qx99Vfwu',
+				        	function(jobs) {
+				        		var html = '<dl>';
+								$.each(jobs, function(i, job){
+									html +=
+										'<dt><a href="' + job['apply-url'] + '">' +  job.title + '</a></dt>' +
+										'<dd>' + job.briefdescription + '</dd>';
+								});
+								html += '</dl>'
+								$('#feed').append(html)
+				        	}
+				        );
+				    });
+			});
+		</script>
+	</body>
+</html>
