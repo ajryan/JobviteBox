@@ -30,10 +30,13 @@ View All Jobs link at the bottom of the Open Jobs list. View
 source on the All Jobs page and look for the **companyId**
 JavaScript variable.
 
-### $('selector').jobviteBox(companyId)
+### $('selector').jobviteBox(companyId, after)
 
 Populates the element targeted by the selector with the
-contents of the job feed. The feed is structured as follows:
+contents of the job feed for the given companyId. The optional
+function 'after' is executed after the target element is populated.
+
+The feed is structured as follows:
 
 ```html
 <div class="jobvite-job">
