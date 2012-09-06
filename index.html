@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jobvitebox : jQuery plugin to create a JobVite listings box" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jobvitebox</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ajryan/JobviteBox">View on GitHub</a>
+
+          <h1 id="project_title">Jobvitebox</h1>
+          <h2 id="project_tagline">jQuery plugin to create a JobVite listings box</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ajryan/JobviteBox/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ajryan/JobviteBox/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>JobViteBox</h1>
+
+<p>JobViteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.</p>
+
+<h2>Demo</h2>
+
+<p>See <a href="here">demo.html</a></p>
+
+<h2>Functions</h2>
+
+<h3>$.getJobViteData(companyId)</h3>
+
+<p>Returns an array of jobs objects with the following signature:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="err">apply-url:</span> <span class="nt">"http://url"</span><span class="p">,</span>
+    <span class="err">briefdescription:</span> <span class="nt">"string"</span><span class="p">,</span>
+    <span class="err">category:</span> <span class="nt">"string"</span><span class="p">,</span>
+    <span class="err">date:</span> <span class="nt">"8/9/2012"</span><span class="p">,</span>
+    <span class="err">description:</span> <span class="nt">"&lt;p&gt;html string&lt;/p&gt;"</span><span class="p">,</span>
+    <span class="err">detail-url:</span> <span class="nt">"http://url"</span><span class="p">,</span>
+    <span class="err">id:</span> <span class="nt">"jobid"</span><span class="p">,</span>
+    <span class="err">jobtype:</span> <span class="nt">"Full-Time"</span><span class="p">,</span>
+    <span class="err">location:</span> <span class="nt">"string"</span><span class="p">,</span>
+    <span class="err">region:</span> <span class="nt">"string"</span><span class="p">,</span>
+    <span class="err">requisitionid:</span> <span class="nt">"11111"</span><span class="p">,</span>
+    <span class="err">title:</span> <span class="nt">"string"</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>To find your company ID, login to JobVite and then click the
+View All Jobs link at the bottom of the Open Jobs list. View
+source on the All Jobs page and look for the <strong>companyId</strong>
+JavaScript variable.</p>
+
+<h3>$('selector').jobViteBox(companyId)</h3>
+
+<p>Populates the element targeted by the selector with the
+contents of the job feed. The feed is structured as follows:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jobvite-job"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"jobvite-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"jobvite-joblocation"</span><span class="nt">&gt;</span>Location<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"jobvite-jobdescription"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"jobvite-jobapply"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"url"</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>Apply<span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jobvitebox maintained by <a href="https://github.com/ajryan">ajryan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
