@@ -43,3 +43,7 @@ contents of the job feed. The feed is structured as follows:
 	<span class="jobvite-jobapply"><a href="url" class="jobvite-jobapplylink">Apply</a></span>
 </div>
 ```
+
+## To-Do
+
+Accept a function on `jobViteBox` that allows filtering of the jobs.

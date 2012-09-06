@@ -28,7 +28,6 @@
                             }
                         }
                         else {
-                            console.log(json.query.results.job);
                             jobCallback(json.query.results.job);
                         }
                     },
@@ -47,7 +46,10 @@
     });
 
     // jQuery plugin to display JobVite data
-    $.fn.jobViteBox = function(companyId) {
+    // companyId: JobVite company Id
+    // after: function to execute after element is populated
+    // TODO: accept a function to filter jobs (then remove the (0,10) from the YQL call)
+    $.fn.jobViteBox = function(companyId, after) {
         var $this = this;
         return $this.each(function() {
             $this.text('loading...');
@@ -66,6 +68,9 @@
                     });
                     
                     $this.html(html);
+
+                    if (after && typeof(after) == "function")
+                        after();
                 },
                 function(errorMessage) {
                     $this.html('<div class="jobvite-error">' + errorMessage + '</div>');
