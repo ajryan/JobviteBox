@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Jobvitebox : jQuery plugin to create a JobVite listings box" />
+    <meta name="description" content="jobvitebox : jQuery plugin to create a jobvite listings box" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Jobvitebox</title>
+    <title>jobvitebox</title>
   </head>
 
   <body>
@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ajryan/JobviteBox">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/ajryan/jobviteBox">View on GitHub</a>
 
-          <h1 id="project_title">Jobvitebox</h1>
-          <h2 id="project_tagline">jQuery plugin to create a JobVite listings box</h2>
+          <h1 id="project_title">jobvitebox</h1>
+          <h2 id="project_tagline">jQuery plugin to create a jobvite listings box</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ajryan/JobviteBox/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ajryan/JobviteBox/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/ajryan/jobviteBox/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ajryan/jobviteBox/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -31,9 +31,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>JobViteBox</h1>
+        <h1>jobviteBox</h1>
 
-<p>JobViteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.</p>
+<p>jobviteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.</p>
 
 <h2>Demo</h2>
 
@@ -41,7 +41,7 @@
 
 <h2>Functions</h2>
 
-<h3>$.getJobViteData(companyId)</h3>
+<h3>$.getJobviteData(companyId)</h3>
 
 <p>Returns an array of jobs objects with the following signature:</p>
 
@@ -61,15 +61,16 @@
 <span class="p">}</span>
 </pre></div>
 
-<p>To find your company ID, login to JobVite and then click the
+<p>To find your company ID, login to jobvite and then click the
 View All Jobs link at the bottom of the Open Jobs list. View
 source on the All Jobs page and look for the <strong>companyId</strong>
 JavaScript variable.</p>
 
-<h3>$('selector').jobViteBox(companyId)</h3>
+<h3>$('selector').jobviteBox(companyId, after)</h3>
 
 <p>Populates the element targeted by the selector with the
-contents of the job feed. The feed is structured as follows:</p>
+contents of the job feed for the given companyId. The optional function 'after' is executed after the target element is populated.</p>
+<p>The feed is structured as follows:</p>
 
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jobvite-job"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"jobvite-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/span&gt;</span>
@@ -84,7 +85,7 @@ contents of the job feed. The feed is structured as follows:</p>
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Jobvitebox maintained by <a href="https://github.com/ajryan">ajryan</a></p>
+        <p class="copyright">jobvitebox maintained by <a href="https://github.com/ajryan">ajryan</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>

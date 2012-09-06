@@ -1,9 +1,9 @@
 (function($) {
     "use strict";
 
-    // utility function to get raw JobVite data
+    // utility function to get raw jobvite data
     $.extend({
-        getJobViteData: function(companyId, jobCallback, errorCallback) {
+        getJobviteData: function(companyId, jobCallback, errorCallback) {
             var $self = this,
 
                 yqlUrl = "http://query.yahooapis.com/v1/public/yql",
@@ -46,12 +46,12 @@
         }
     });
 
-    // jQuery plugin to display JobVite data
-    $.fn.jobViteBox = function(companyId) {
+    // jQuery plugin to display jobvite data
+    $.fn.jobviteBox = function(companyId) {
         var $this = this;
         return $this.each(function() {
             $this.text('loading...');
-            $.getJobViteData(
+            $.getJobviteData(
                 companyId,
                 function(jobs) {
                     var html = '';
