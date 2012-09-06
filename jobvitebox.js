@@ -1,7 +1,7 @@
 (function($) {
     "use strict";
 
-    // utility function to get raw jobvite data
+    // utility function to get raw Jobvite data
     $.extend({
         getJobviteData: function(companyId, jobCallback, errorCallback) {
             var $self = this,
@@ -28,7 +28,6 @@
                             }
                         }
                         else {
-                            console.log(json.query.results.job);
                             jobCallback(json.query.results.job);
                         }
                     },
@@ -46,8 +45,11 @@
         }
     });
 
-    // jQuery plugin to display jobvite data
-    $.fn.jobviteBox = function(companyId) {
+    // jQuery plugin to display Jobvite data
+    // companyId: Jobvite company Id
+    // after: function to execute after element is populated
+    // TODO: accept a function to filter jobs (then remove the (0,10) from the YQL call)
+    $.fn.jobviteBox = function(companyId, after) {
         var $this = this;
         return $this.each(function() {
             $this.text('loading...');
@@ -66,6 +68,9 @@
                     });
                     
                     $this.html(html);
+
+                    if (after && typeof(after) == "function")
+                        after();
                 },
                 function(errorMessage) {
                     $this.html('<div class="jobvite-error">' + errorMessage + '</div>');
