@@ -10,16 +10,18 @@
                 query = "select * from xml(0,10) where url='http://www.jobvite.com/CompanyJobs/Xml.aspx?c=" +
                          companyId +
                         "' and itemPath='result.job'",
-
                 ajaxOptions = {
                     url: yqlUrl,
                     dataType: 'jsonp',
+                    jsonp: 'callback',
+                    jsonpCallback: 'yqlCallback',
                     async: true,
+                    cache: true,
                     data: {
                         q: query,
                         format: 'json',
                         env: 'store://datatables.org/alltableswithkeys',
-                        callback: '?'
+                        callback: 'yqlCallback'
                     },
                     success: function(json) {
                         if (!json.query || json.query.count < 1 || !json.query.results || !json.query.results.job) {
