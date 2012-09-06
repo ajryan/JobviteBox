@@ -37,9 +37,9 @@ contents of the job feed. The feed is structured as follows:
 
 ```html
 <div class="jobvite-job">
-	<span class="jobvite-title">Title</span>
+	<span class="jobvite-title"><a href="url" class="jobvite-jobdetaillink">Title</a></span>
 	<span class="jobvite-joblocation">Location</span>
 	<span class="jobvite-jobdescription">Description</span>
-	<span class="jobvite-jobapply"><a href="url" class="">Apply</a></span>
+	<span class="jobvite-jobapply"><a href="url" class="jobvite-jobapplylink">Apply</a></span>
 </div>
 ```

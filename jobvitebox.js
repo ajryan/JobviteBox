@@ -58,10 +58,10 @@
                     $.each(jobs, function(i, job) {
                         html +=
                             '<div class="jobvite-job">' +
-                                '<span class="jobvite-jobtitle"><a href="' + job['detail-url'] + '" clas="jobvite-jobdetaillink">' +  job.title + '</a></span>' +
+                                '<span class="jobvite-jobtitle"><a href="' + job['detail-url'] + '" class="jobvite-jobdetaillink">' +  job.title + '</a></span>' +
                                 '<span class="jobvite-joblocation">' + job.location + '</span>' +
                                 '<span class="jobvite-jobdescription">' + job.briefdescription + '</span>' +
-                                '<span class="jobvite-jobapply"><a href="' + job['apply-url'] + '" clas="jobvite-jobapplylink">Apply</a></span>' +
+                                '<span class="jobvite-jobapply"><a href="' + job['apply-url'] + '" class="jobvite-jobapplylink">Apply</a></span>' +
                             '</div>';
                     });
                     
