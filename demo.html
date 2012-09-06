@@ -1,71 +1,58 @@
-<html>
-	<head>
-		<title>Jobvite demo</title>
-	</head>
-	<body>
-		<h3>Feed:</h3>
-		<input type="button" id="getFeed" value="Get Feed"></input>
-		<div id="feed"></div>
-		
-		<!-- todo - remove protocol when not viewing locally -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script>
-			(function($){
-				$.extend({
-					// TODO: options object & defaults
-					jobVite: function(companyId, jobCallback) {
-						var $self = this;
-						
-			  			var yqlUrl = "http://query.yahooapis.com/v1/public/yql";
-						var query = "select * from xml(0,10) where url='http://www.jobvite.com/CompanyJobs/Xml.aspx?c=" +
-									 companyId + 
-									"' and itemPath='result.job'";
-						
-						var ajaxOptions = {
-						    url: yqlUrl,
-						    dataType: 'jsonp',
-						    async: true,
-						    data: {
-						    	q: query,
-						    	format: 'json',
-						    	env: 'store://datatables.org/alltableswithkeys',
-						    	callback: '?'
-						    },
-						    success: function(json) {
-						    	jobCallback(json.query.results.job);
-						    },
-						    error: function() { 
-						    	// TODO: error callback
-						    	alert('Timed out getting job feed.');
-						    },
-						    timeout: 10000
-						};
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>JobViteBox Demo</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="demo.css">
+    </head>
+    <body>
+        <h1>JobVite Demo</h1>
+        <p>
+            The JobVite feed is displayed below. Click the "Get Feed"
+            button to reload the latest.
+        </p>
+        <p>
+            To find your company ID, login to JobVite and then click
+            the View All Jobs link at the bottom of the Open Jobs list.
+            View source on the All Jobs page and look for the <strong>companyId</strong>
+            JavaScript variable.
+        </p>
 
-						$.ajax(ajaxOptions);
-						return $self.toReturn;
-					}
-				});
-			})(jQuery);
+        <label for="companyId">Company ID:</label>
+        <input type="text" id="companyId" value="qx99Vfwu"></input>
 
-			$(document).ready(function() {
-				$('#getFeed').live(
-				    'click',
-				    function() {
-				        $.jobVite(
-				        	'qx99Vfwu',
-				        	function(jobs) {
-				        		var html = '<dl>';
-								$.each(jobs, function(i, job){
-									html +=
-										'<dt><a href="' + job['apply-url'] + '">' +  job.title + '</a></dt>' +
-										'<dd>' + job.briefdescription + '</dd>';
-								});
-								html += '</dl>'
-								$('#feed').append(html)
-				        	}
-				        );
-				    });
-			});
-		</script>
-	</body>
+        <input type="button" id="getFeed" value="Get Feed"></input>
+
+        <h3>JobVite Feed:</h3>
+        <div id="jobvite"></div>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="jobvitebox.js"></script>
+        <script>
+            // TODO: ajaxstart / ajaxstop not called??
+            $(document)
+                .ajaxStart(function() {
+                    alert('get');
+                    $(this).attr('disabled', 'disabled');
+                })
+                .ajaxStop(function() {
+                    $(this).removeAttr('disabled');
+                });
+
+            var loadJobs = function() {
+                $('#jobvite').jobViteBox($('#companyId').val());
+            };
+
+            $(document).ready(function() {
+                $('#getFeed')
+                    .live(
+                        'click',
+                        function() {
+                            loadJobs();
+                    });
+
+                loadJobs();
+            });
+        </script>
+    </body>
 </html>

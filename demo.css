@@ -1,0 +1,46 @@
+/* page styles */
+body {
+    background-color: #ddd;
+    color: #444;
+}
+h1, h2, h3 {
+    font-family: Calibri, Verdana, sans-serif;
+}
+p {
+    font-family: Cambria, Georgia, serif;
+}
+a {
+    font-family: Calibri, Verdata, sans-serif;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* JobViteBox styles */
+#jobvite {
+    margin: 0 0.5em 0.5em 0.5em;
+    padding: 0 1em 1em 1em;
+    background-color: #eee;
+    color: #555;
+}
+div.jobvite-job {
+    border-bottom: 1px solid #cdcdcd;
+    padding: 0.5em 0 0.5em 0;
+    margin-bottom: 0.5em;
+}
+span.jobvite-jobtitle {
+    display: block;
+    font-size: 1.2em;
+}
+span.jobvite-joblocation {
+    display: block;
+    font-style: italic;
+}
+span.jobvite-jobdescription {
+    font-size: 1em;
+}
+span.jobvite-jobapply {
+    display: inline-block;
+    margin-left: 0.5em;
+}
