@@ -1,9 +1,9 @@
 (function($) {
     "use strict";
 
-    // utility function to get raw JobVite data
+    // utility function to get raw Jobvite data
     $.extend({
-        getJobViteData: function(companyId, jobCallback, errorCallback) {
+        getJobviteData: function(companyId, jobCallback, errorCallback) {
             var $self = this,
 
                 yqlUrl = "http://query.yahooapis.com/v1/public/yql",
@@ -45,15 +45,15 @@
         }
     });
 
-    // jQuery plugin to display JobVite data
-    // companyId: JobVite company Id
+    // jQuery plugin to display Jobvite data
+    // companyId: Jobvite company Id
     // after: function to execute after element is populated
     // TODO: accept a function to filter jobs (then remove the (0,10) from the YQL call)
-    $.fn.jobViteBox = function(companyId, after) {
+    $.fn.jobviteBox = function(companyId, after) {
         var $this = this;
         return $this.each(function() {
             $this.text('loading...');
-            $.getJobViteData(
+            $.getJobviteData(
                 companyId,
                 function(jobs) {
                     var html = '';

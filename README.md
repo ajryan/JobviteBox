@@ -1,10 +1,10 @@
-# JobViteBox
+# JobviteBox
 
-JobViteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.
+JobviteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.
 
 ## Functions
 
-### $.getJobViteData(companyId)
+### $.getJobviteData(companyId)
 
 Returns an array of jobs objects with the following signature:
 
@@ -25,12 +25,12 @@ Returns an array of jobs objects with the following signature:
 }
 ```
 
-To find your company ID, login to JobVite and then click the
+To find your company ID, login to Jobvite and then click the
 View All Jobs link at the bottom of the Open Jobs list. View
 source on the All Jobs page and look for the **companyId**
 JavaScript variable.
 
-### $('selector').jobViteBox(companyId)
+### $('selector').jobviteBox(companyId)
 
 Populates the element targeted by the selector with the
 contents of the job feed. The feed is structured as follows:
@@ -46,4 +46,4 @@ contents of the job feed. The feed is structured as follows:
 
 ## To-Do
 
-Accept a function on `jobViteBox` that allows filtering of the jobs.
+Accept a function on `jobviteBox` that allows filtering of the jobs.

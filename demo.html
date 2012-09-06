@@ -1,18 +1,18 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title>JobViteBox Demo</title>
+        <title>JobviteBox Demo</title>
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="demo.css">
     </head>
     <body>
-        <h1>JobVite Demo</h1>
+        <h1>Jobvite Demo</h1>
         <p>
-            The JobVite feed is displayed below. Click the "Get Feed"
+            The Jobvite feed is displayed below. Click the "Get Feed"
             button to reload the latest.
         </p>
         <p>
-            To find your company ID, login to JobVite and then click
+            To find your company ID, login to Jobvite and then click
             the View All Jobs link at the bottom of the Open Jobs list.
             View source on the All Jobs page and look for the <strong>companyId</strong>
             JavaScript variable.
@@ -23,7 +23,7 @@
 
         <input type="button" id="getFeed" value="Get Feed"></input>
 
-        <h3>JobVite Feed:</h3>
+        <h3>Jobvite Feed:</h3>
         <div id="jobvite"></div>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -40,7 +40,7 @@
                 });
 
             var loadJobs = function() {
-                $('#jobvite').jobViteBox($('#companyId').val());
+                $('#jobvite').jobviteBox($('#companyId').val());
             };
 
             $(document).ready(function() {
