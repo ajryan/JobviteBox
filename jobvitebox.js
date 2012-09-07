@@ -1,12 +1,17 @@
-(function($) {
-    "use strict";
+/*
+ * JobviteBox plugin
+ * http://ajryan.github.com/JobviteBox/
+ *
+ * Copyright 2012 Aidan Ryan
+ * Released under the MIT license
+ * https://github.com/ajryan/JobviteBox/blob/master/LICENSE
+*/
+(function(window, undefined) {
+    "use strict"
 
-    // utility function to get raw Jobvite data
-    $.extend({
+    var _jobviteBox = {
         getJobviteData: function(companyId, jobCallback, errorCallback) {
-            var $self = this,
-
-                yqlUrl = "http://query.yahooapis.com/v1/public/yql",
+            var yqlUrl = "http://query.yahooapis.com/v1/public/yql",
                 query = "select * from xml(0,10) where url='http://www.jobvite.com/CompanyJobs/Xml.aspx?c=" +
                          companyId +
                         "' and itemPath='result.job'",
@@ -42,9 +47,24 @@
                 };
 
             $.ajax(ajaxOptions);
-
-            return $self.toReturn;
         }
+    };
+
+    window.JobviteBox = _jobviteBox;
+
+    // AMD module
+    if (typeof define === "function" && define.amd && define.amd.JobviteBox) {
+        define("jobvitebox", [], function() { return _jobviteBox; });
+    }
+
+})(window);
+
+(function($) {
+    "use strict";
+
+    // utility function to get raw Jobvite data
+    $.extend({
+        
     });
 
     // jQuery plugin to display Jobvite data
@@ -55,7 +75,8 @@
         var $this = this;
         return $this.each(function() {
             $this.text('loading...');
-            $.getJobviteData(
+            
+            JobviteBox.getJobviteData(
                 companyId,
                 function(jobs) {
                     var html = '';
