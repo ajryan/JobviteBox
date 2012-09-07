@@ -2,6 +2,8 @@
 
 JobviteBox is a [jQuery](http://jquery.com) plugin that fetches a feed of job listings from [Jobvite](http://jobvite.com) and displays it on your page.
 
+See a [demo](http://ajryan.github.com/JobviteBox/demo.html)
+
 ## Functions
 
 ### $('selector').jobviteBox(options)
