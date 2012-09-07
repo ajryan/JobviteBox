@@ -1,14 +1,18 @@
 # JobviteBox
 
-JobviteBox is a jQuery plugin fetches a feed of job listings and displays it on your page.
+JobviteBox is a [jQuery](http://jquery.com) plugin that fetches a feed of job listings from [Jobvite](http://jobvite.com) and displays it on your page.
 
 ## Functions
 
 ### $('selector').jobviteBox(options)
 
 Populates the element targeted by the selector with the
-contents of the job feed for the given companyId. The optional
-function 'after' is executed after the target element is populated.
+contents of the job feed for the given companyId.
+
+The optional predicate function 'filter' is executed against each job
+to determine whether it should be displayed.
+
+The optional function 'after' is executed after the target element is populated.
 
 ```
 options {
@@ -18,19 +22,19 @@ options {
                    Jobs page and look for the **companyId** JavaScript
                    variable.
 
+        filter:    predicate function(job, i) to execute against each job
+                   to determine whether it should be displayed. i is the
+                   offset of the job in the list. see below for job 
+                   JSON format.
+
         after:     function(jobsFound) to execute after element is
                    populated. jobsFound is true if the query and
                    filter resulted in displaying any jobs, otherwise
                    false.
-
-        filter:    predicate function(job, i) to execute against each job
-                   to determine whether it should be displayed. i is the
-                   offset of the job in the list. see README.md for job 
-                   JSON format.
 }
 ```
 
-The feed is structured as follows:
+The feed HTML is structured as follows:
 
 ```html
 <div class="jobvite-job">
@@ -46,7 +50,7 @@ The feed is structured as follows:
 Fetches jobVite jobs as JSON.
 
 ```
-companyId:     Jobvite company ID.
+companyId:     Jobvite company ID (see above).
 
 jobCallback:   function(json) called when Jobvite data is
                successfully retrieved.
