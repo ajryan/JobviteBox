@@ -128,8 +128,11 @@
                 useFilter = JobviteBox._isFunction(settings.filter),
 
                 storeJobs = function(jobs) {
-                    jobsData = jobs;
-                    $this.data('jobvite-jobs', jobs);
+                    jobsData = {
+                        companyId: settings.companyId,
+                        jobs: jobs
+                    };
+                    $this.data('jobvite-jobs', jobsData);
                 },
 
                 processJobs = function(jobs) {
@@ -163,13 +166,13 @@
                     JobviteBox._executeIfFunction(settings.after);
                 };
 
-            // if we have jobs data in cache, just
-            // process it through the filter
-            if (jobsData) {
-                processJobs(jobsData);
+            // if we have jobs data in cache for the current
+            // company id, just process it through the filter
+            if (jobsData && jobsData.companyId === settings.companyId) {
+                processJobs(jobsData.jobs);
             }
-            // with no cached data, fetch the
-            // feed, cache it, and then process
+            // with no cached data for the current company id, fetch
+            // the feed, cache it, and then process
             else {
                 JobviteBox.getJobviteData(
                     settings.companyId,
