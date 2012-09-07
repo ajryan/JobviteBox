@@ -29,6 +29,7 @@ a:hover {
 #side {
     width: 33%;
     float: left;
+    margin: 1%;
 }
 
 /* filler */
@@ -38,11 +39,12 @@ a:hover {
 
 /* JobviteBox */
 #jobvite {
-    margin: 0 0.5em 0.5em 0.5em;
+    margin-bottom: 0.5em;
     padding: 0 1em 1em 1em;
     background-color: #eee;
     color: #555;
     max-height: 700px;
+    min-height: 700px;
     overflow: auto;
 }
 div.jobvite-job {
@@ -64,4 +66,8 @@ span.jobvite-jobdescription {
 span.jobvite-jobapply {
     display: inline-block;
     margin-left: 0.5em;
+}
+#prev, #next {
+    cursor: pointer;
+    color: blue;
 }

@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="demo.css">
     </head>
     <body>
-        <h1>Jobvite Demo</h1>
+        <h1>JobviteBox Demo</h1>
         <div id="main">
             <p>
                 The Jobvite feed is displayed to the right. Click the "Get Feed"
@@ -28,7 +28,7 @@
             
             <div id="filler">
                 <h3>Filler</h3>
-                
+
                 <!-- http://www.fillerati.com -->
                 <p>'Anything you like,' said the Footman, and began whistling.</p>
                 <p>'Oh, there's no use in talking to him,' said Alice desperately: 'he's  perfectly idiotic!' And she opened the door and went in.</p>
@@ -45,35 +45,62 @@
         </div>
         <div id="side">
             <h3>Jobvite Feed:</h3>
-            <div id="jobvite"></div>
+            
+            <div id="jobvite">Loading...</div>
+            
+            <a id="prev">< Prev</a>&nbsp;<span id="pagenum">1</span>&nbsp;<a id="next">Next ></a>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script src="jobvitebox.js"></script>
         <script>
-            // TODO: ajaxstart / ajaxstop not called??
-            $(document)
-                .ajaxStart(function() {
-                    alert('get');
-                    $(this).attr('disabled', 'disabled');
-                })
-                .ajaxStop(function() {
-                    $(this).removeAttr('disabled');
-                });
+            page = 0;
+            size = 3;
 
-            var loadJobs = function() {
-                $('#jobvite').jobviteBox($('#companyId').val());
+            var loadJobs = function(pageIncrement) {
+                
+                page = Math.max(0, page + pageIncrement);
+
+                var $getFeedButton = $('#getFeed');
+
+                $getFeedButton.attr('disabled', 'disabled');
+
+                $('#jobvite').jobviteBox({
+                    companyId: $('#companyId').val(),
+
+                    filter: function(job, i) {
+                        return (i >= page * size) && 
+                               (i < (page * size) + size);
+                    },
+
+                    after: function(jobsFound) {
+                        $getFeedButton.removeAttr('disabled');
+
+                        if (jobsFound === false && pageIncrement > 0)
+                            page = Math.max(0, page - pageIncrement);
+
+                        $('#pagenum').text(page + 1);
+                    }
+                });
             };
 
             $(document).ready(function() {
-                $('#getFeed')
-                    .live(
-                        'click',
-                        function() {
-                            loadJobs();
-                    });
+                
+                // click get feed resets the paging
+                $('#getFeed').live('click', function() {
+                    loadJobs(0);
+                });
 
-                loadJobs();
+                // click prev and next to move between pages
+                $('#prev').live('click', function() {
+                    loadJobs(-1);
+                });
+                $('#next').live('click', function() {
+                    loadJobs(1);
+                });
+
+                // perform inital job load
+                loadJobs(0);
             });
         </script>
     </body>
