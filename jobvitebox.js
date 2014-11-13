@@ -55,7 +55,7 @@
 
             $.ajax(ajaxOptions);
         },
-        _yqlQueryFormat: "select * from xml where url='http://www.jobvite.com/CompanyJobs/Xml.aspx?c={{companyId}}' and itemPath='result.job'",
+        _yqlQueryFormat: "select * from xml where url='http://hire.jobvite.com/CompanyJobs/Xml.aspx?c={{companyId}}' and itemPath='result.job'",
         _baseAjaxOptions: {
             url: "http://query.yahooapis.com/v1/public/yql",
             dataType: 'jsonp',
